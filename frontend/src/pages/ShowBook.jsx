@@ -21,7 +21,7 @@ const ShowBook = () => {
         console.log(error);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className='p-4'>
@@ -46,6 +46,10 @@ const ShowBook = () => {
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Publish Year</span>
             <span>{book.publishYear}</span>
+          </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Price</span>
+            <span>${book.price}</span>
           </div>
           <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Create Time</span>

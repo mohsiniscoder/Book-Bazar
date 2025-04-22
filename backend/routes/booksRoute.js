@@ -9,16 +9,18 @@ router.post('/', async (request, response) => {
     if (
       !request.body.title ||
       !request.body.author ||
-      !request.body.publishYear
+      !request.body.publishYear ||
+      !request.body.price
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: title, author, publishYear',
+        message: 'Send all required fields: title, author, publishYear, price, image',
       });
     }
     const newBook = {
       title: request.body.title,
       author: request.body.author,
       publishYear: request.body.publishYear,
+      price: request.body.price,
     };
 
     const book = await Book.create(newBook);
@@ -65,16 +67,17 @@ router.put('/:id', async (request, response) => {
     if (
       !request.body.title ||
       !request.body.author ||
-      !request.body.publishYear
+      !request.body.publishYear ||
+      !request.body.price
     ) {
       return response.status(400).send({
-        message: 'Send all required fields: title, author, publishYear',
+        message: 'Send all required fields: title, author, publishYear, price, image',
       });
     }
 
     const { id } = request.params;
 
-    const result = await Book.findByIdAndUpdate(id, request.body);
+    const result = await Book.findByIdAndUpdate(id, request.body, { new: true });
 
     if (!result) {
       return response.status(404).json({ message: 'Book not found' });

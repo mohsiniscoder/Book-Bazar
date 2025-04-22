@@ -24,6 +24,9 @@ const BookSingleCard = ({ book }) => {
         <BiUserCircle className='text-red-300 text-2xl' />
         <h2 className='my-1'>{book.author}</h2>
       </div>
+      <div className='flex justify-start items-center gap-x-2'>
+        <p className='text-xl'>${book.price}</p>
+      </div>
       <div className='flex justify-between items-center gap-x-2 mt-4 p-4'>
         <BiShow
           className='text-3xl text-blue-800 hover:text-black cursor-pointer'
